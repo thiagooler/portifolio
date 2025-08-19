@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thiago Henrique - Fotógrafo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background: white;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            border-radius: 15px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        .header {
+            text-align: center;
+            padding: 30px 0;
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            margin: -20px -20px 30px -20px;
+            border-radius: 15px 15px 0 0;
+            color: white;
+        }
+
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 4px solid white;
+            margin-bottom: 15px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+        }
+
+        .profile-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .header h1 {
+            font-size: 2.2em;
+            margin-bottom: 5px;
+            font-weight: 300;
+        }
+
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        .section {
+            margin: 30px 0;
+            padding: 0 10px;
+        }
+
+        .section h2 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+            border-left: 4px solid #3498db;
+            padding-left: 15px;
+        }
+
+        .about-text {
+            font-size: 1em;
+            line-height: 1.7;
+            text-align: justify;
+            color: #555;
+        }
+
+        .about-text p {
+            margin-bottom: 20px; /* Adicionado espaçamento entre parágrafos para não ficar poluído */
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .service-item {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .service-item:hover {
+            border-color: #3498db;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .service-item span {
+            font-size: 1.5em;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        /* Estilos para portfólio */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .portfolio-item {
+            text-align: center;
+        }
+
+        .portfolio-item a {
+            display: block;
+            text-decoration: none;
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .portfolio-item img:hover {
+            transform: scale(1.05);
+        }
+
+        .portfolio-item p {
+            margin-top: 10px;
+            font-style: italic;
+            color: #555;
+        }
+
+        /* Estilos para avaliações */
+        .reviews-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 25px;
+            background: #25d366;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            text-align: center;
+            transition: all 0.3s ease;
+            font-size: 1.1em;
+            margin: 10px 5px;
+        }
+
+        .btn:hover {
+            background: #20b358;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .btn-primary {
+            background: #3498db;
+        }
+
+        .btn-primary:hover {
+            background: #2980b9;
+        }
+
+        .btn-secondary {
+            background: #e74c3c;
+        }
+
+        .btn-secondary:hover {
+            background: #c0392b;
+        }
+
+        .btn-reviews {
+            background: #f39c12;
+        }
+
+        .btn-reviews:hover {
+            background: #e67e22;
+        }
+
+        .btn-instagram {
+            background: #e1306c;
+        }
+
+        .btn-instagram:hover {
+            background: #c13584;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .contact-section {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .contact-section h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+
+        .location {
+            background: #e8f4fd;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            color: #2c3e50;
+        }
+
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 20px;
+            right: 20px;
+            background: #25d366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 30px;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            background: #20b358;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                padding: 15px;
+                border-radius: 10px;
+            }
+
+            .header {
+                margin: -15px -15px 20px -15px;
+                padding: 20px 0;
+                border-radius: 10px 10px 0 0;
+            }
+
+            .header h1 {
+                font-size: 1.8em;
+            }
+
+            .services-grid,
+            .portfolio-grid,
+            .reviews-links {
+                grid-template-columns: 1fr;
+            }
+
+            .social-links {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                display: block;
+                margin: 10px 0;
+                width: 90%;
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.6s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container fade-in">
+        <div class="header">
+            <div class="profile-img">
+                <img src="https://i.imgur.com/QaulFxE.png" alt="Thiago Henrique, fotógrafo profissional">
+            </div>
+            <h1>Thiago Henrique</h1>
+            <p>Fotógrafo Profissional</p>
+        </div>
+
+        <div class="section">
+            <h2>Sobre Mim</h2>
+            <div class="about-text">
+                <p>Sou Thiago Henrique, fotógrafo de Boa Ventura de São Roque, apaixonado por eternizar histórias há mais de uma década. Meu olhar nasceu no interior, mas já atravessou fronteiras — do Brasil ao Chile — registrando momentos que não conhecem limites de tempo ou distância.</p>
+                
+                <p>A fotografia, para mim, não é apenas técnica. É sentir junto, é transformar gestos simples em memórias eternas. Cada clique carrega compromisso, verdade e emoção. Seja em casamentos, formaturas, ensaios ou grandes eventos, acredito que <strong>o dia é do cliente</strong> — único, especial e irrepetível. Minha missão é fazer desse dia um capítulo inesquecível da sua vida.</p>
+                
+                <p>Ao longo da minha trajetória, tive a honra de ser reconhecido como <strong>Melhor do Ano em Boa Ventura por três anos consecutivos</strong>, ser o <strong>fotógrafo oficial da Revista Expressão</strong>, assinar ensaios de moda para marcas como <strong>Bem Campeiro</strong> e <strong>San't Steban</strong>, além de atuar em empresas como a <strong>Cross Formaturas</strong>.</p>
+                
+                <p>Mais do que fotografar, eu <strong>crio experiências</strong>. Com sensibilidade, direção humanizada e conhecimento em psicologia aplicada, ajudo cada pessoa a se sentir confiante diante da câmera. Porque acredito que a fotografia também pode ser <strong>terapêutica</strong>: um encontro consigo mesmo, um convite a enxergar sua própria beleza.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Serviços</h2>
+            <div class="services-grid">
+                <div class="service-item">
+                    <span>💍</span>
+                    <strong>Casamentos</strong>
+                </div>
+                <div class="service-item">
+                    <span>🎂</span>
+                    <strong>Aniversários</strong>
+                </div>
+                <div class="service-item">
+                    <span>🗓️</span>
+                    <strong>Eventos</strong>
+                </div>
+                <div class="service-item">
+                    <span>🎓</span>
+                    <strong>Formaturas</strong>
+                </div>
+                <div class="service-item">
+                    <span>🧑‍💼</span>
+                    <strong>Perfil Profissional</strong>
+                </div>
+                <div class="service-item">
+                    <span>👶</span>
+                    <strong>Infantil</strong>
+                </div>
+                <div class="service-item">
+                    <span>🤰</span>
+                    <strong>Gestante</strong>
+                </div>
+                <div class="service-item">
+                    <span>👩‍❤️‍👨</span>
+                    <strong>Casal</strong>
+                </div>
+                <div class="service-item">
+                    <span>👗</span>
+                    <strong>15 Anos</strong>
+                </div>
+            </div>
+        </div>
+
+        <!-- Seção de Portfólio com links para destaques do Instagram -->
+        <div class="section">
+            <h2>Portfólio</h2>
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <a href="https://www.instagram.com/stories/highlights/18117901396416760/" target="_blank">
+                        <img src="https://i.imgur.com/Dqr6OHd.png" alt="Exemplo de fotografia de casamento">
+                    </a>
+                    <p>Casamento</p>
+                </div>
+                <div class="portfolio-item">
+                    <a href="https://www.instagram.com/stories/highlights/18008109686658651/" target="_blank">
+                        <img src="https://i.imgur.com/oOdynl3.png" alt="Exemplo de fotografia de 15 anos">
+                    </a>
+                    <p>15 Anos</p>
+                </div>
+                <div class="portfolio-item">
+                    <a href="https://www.instagram.com/stories/highlights/18116836810405353/" target="_blank">
+                        <img src="https://i.imgur.com/XszlJrB.png" alt="Exemplo de fotografia de gestante">
+                    </a>
+                    <p>Gestante</p>
+                </div>
+                <div class="portfolio-item">
+                    <a href="https://www.instagram.com/stories/highlights/17908434846022466/" target="_blank">
+                        <img src="https://i.imgur.com/s6QhNOK.png" alt="Exemplo de fotografia infantil">
+                    </a>
+                    <p>Infantil</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Nova seção de Avaliações dos Clientes -->
+        <div class="section">
+            <h2>Avaliações dos Clientes</h2>
+            <div class="reviews-links">
+                <a href="https://www.google.com/search?q=studio+nbv&rlz=1C1ONGR_pt-PTBR1165BR1165&oq=studio+nbv&gs_lcrp=EgZjaHJvbWUqDAgAECMYJxiABBiKBTIMCAAQIxgnGIAEGIoFMg0IARAuGK8BGMcBGIAEMgYIAhAjGCcyBggDEEUYPTIGCAQQRRg9MgYIBRBFGEEyBggGEEUYQTIGCAcQRRhB0gEIMjc5MWowajeoAgCwAgA&sourceid=chrome&ie=UTF-8#mpd=~4729566589293999046/customers/reviews" class="btn btn-reviews" target="_blank">
+                    ⭐ Avaliações no Google
+                </a>
+                <a href="https://www.instagram.com/stories/highlights/17924762246986378/" class="btn btn-instagram" target="_blank">
+                    💬 O que nossos clientes dizem no Instagram
+                </a>
+            </div>
+        </div>
+
+        <div class="contact-section">
+            <h3>Solicite seu Orçamento</h3>
+            <p>Entre em contato pelo WhatsApp e vamos planejar seu ensaio dos sonhos!</p>
+            <a href="https://wa.me/5542998370150?text=Olá! Gostaria de solicitar um orçamento para fotografia." class="btn" target="_blank">
+                💬 WhatsApp - Orçamento
+            </a>
+        </div>
+
+        <div class="section">
+            <h2>Redes Sociais</h2>
+            <div class="social-links">
+                <a href="https://www.instagram.com/thiagoh.fotografia/" class="btn btn-primary" target="_blank">
+                    📷 Instagram - Portfólio
+                </a>
+                <a href="https://www.facebook.com/thiagooler" class="btn btn-secondary" target="_blank">
+                    📘 Facebook
+                </a>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="location">
+                <h2 style="border: none; margin-bottom: 10px; padding: 0;">📍 Localização</h2>
+                <p><strong>Base:</strong> Boa Ventura de São Roque, PR</p>
+                <p><strong>Atuação:</strong> Todo o Brasil e Exterior</p>
+            </div>
+        </div>
+    </div>
+
+    <a href="https://wa.me/5542998370150?text=Olá! Gostaria de solicitar um orçamento para fotografia." class="whatsapp-float" target="_blank">
+        💬
+    </a>
+
+    <script>
+        // Adiciona animação suave aos elementos quando a página carrega
+        document.addEventListener('DOMContentLoaded', function() {
+            const sections = document.querySelectorAll('.section');
+            sections.forEach((section, index) => {
+                setTimeout(() => {
+                    section.classList.add('fade-in');
+                }, index * 100);
+            });
+        });
+
+        // Adiciona efeito de clique nos botões
+        document.querySelectorAll('.btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                this.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 100);
+            });
+        });
+    </script>
+</body>
+</html>
